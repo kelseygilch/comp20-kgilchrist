@@ -31,55 +31,56 @@ and (max-device-width : 400px) {
 @media only screen 
 and (min-device-width : 401px) 
 and (max-device-width : 500px) {
-
+	<div class="support"></div>
 }
 
 @media only screen 
 and (min-device-width : 501px) 
 and (max-device-width : 600px) {
-
+	<div class="billing"></div>
 }
 
 @media only screen 
 and (min-device-width : 601px) 
 and (max-device-width : 700px) {
-
+	<div class="operations"></div>
 }
 
 @media only screen 
 and (min-device-width : 701px) 
 and (max-device-width : 800px) {
-
+	<div class="documented"></div>
 }
 
 @media only screen 
 and (min-device-width : 801px) 
 and (max-device-width : 900px) {
-
+	<div class="bc"></div>
 }
 
 @media only screen 
 and (min-device-width : 901px) 
 and (max-device-width : 1000px) {
-
+	<div class="programmer"></div>
 }
 
 @media only screen 
 and (min-device-width : 1001px) 
 and (max-device-width : 1100px) {
-
+	<div class="analyst"></div>
 }
 
 @media only screen 
 and (min-device-width : 1101px) 
 and (max-device-width : 1200px) {
-
+	<div class="pl"></div>
 }
 
 @media only screen 
 and (min-device-width : 1201px) {
-
+	<div class="customer"></div>
 }
+
 }
 
 
