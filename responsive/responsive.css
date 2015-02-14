@@ -1,87 +1,82 @@
-responsive.css
-
-
-.software {
-
-.customer {width:128px; height:240px; background:url(images/software.png) 0 0px;}
-
-.pl {width:128px; height:240px; background:url(images/software.png) 128 0px;}
-
-.analyst {width:128px; height:240px; background:url(images/software.png) 256 0px;}
-
-.programmer {width:128px; height:240px; background:url(images/software.png) 384 0px;}
-
-.bc {width:128px; height:240px; background:url(images/software.png) 512 0px;}
-
-.documented {width:128px; height:240px; background:url(images/software.png) 0 -240px;}
-
-.operations {width:128px; height:240px; background:url(images/software.png) 128 -240px;}
-
-.billing {width:128px; height:240px; background:url(images/software.png) 256 -240px;}
-
-.support {width:128px; height:240px; background:url(images/software.png) 384 -240px;}
-
-.need {width:128px; height:240px; background:url(images/software.png) 512 -240px;}
 
 @media only screen  
 and (max-device-width : 400px) {
-	<div class="need"></div>
+	.software {width:128px; height:240px; background:url("software.png") -512px -240px;}
 }
 
 @media only screen 
 and (min-device-width : 401px) 
 and (max-device-width : 500px) {
-	<div class="support"></div>
+	.software {width:128px; height:240px; background:url("software.png") -384px -240px;}
 }
 
 @media only screen 
 and (min-device-width : 501px) 
 and (max-device-width : 600px) {
-	<div class="billing"></div>
+	.software {width:128px; height:240px; background:url("software.png") -256px -240px;}
 }
 
 @media only screen 
 and (min-device-width : 601px) 
 and (max-device-width : 700px) {
-	<div class="operations"></div>
+	.software {width:128px; height:240px; background:url("software.png") -128px -240px;}
 }
 
 @media only screen 
 and (min-device-width : 701px) 
 and (max-device-width : 800px) {
-	<div class="documented"></div>
+	.software {width:128px; height:240px; background:url("software.png") 0px -240px;}
 }
 
 @media only screen 
 and (min-device-width : 801px) 
 and (max-device-width : 900px) {
-	<div class="bc"></div>
+	.software {width:128px; height:240px; background:url("software.png") -512px 0px;}
 }
 
 @media only screen 
 and (min-device-width : 901px) 
 and (max-device-width : 1000px) {
-	<div class="programmer"></div>
+	.software {width:128px; height:240px; background:url("software.png") -384px 0px;}
 }
 
 @media only screen 
 and (min-device-width : 1001px) 
 and (max-device-width : 1100px) {
-	<div class="analyst"></div>
+	.software {width:128px; height:240px; background:url("software.png") -256px 0px;}
 }
 
 @media only screen 
 and (min-device-width : 1101px) 
 and (max-device-width : 1200px) {
-	<div class="pl"></div>
+	.software {width:128px; height:240px; background:url("software.png") -128px 0px;}
 }
 
 @media only screen 
 and (min-device-width : 1201px) {
-	<div class="customer"></div>
+	.software {width:128px; height:240px; background:url("software.png") 0px 0px;}
 }
 
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
