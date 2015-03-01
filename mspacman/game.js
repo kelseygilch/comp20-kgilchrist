@@ -1,6 +1,3 @@
-
-//<body onload="msPacMan">
-
 function init(){
 
 var canvas = document.getElementById("game_canvas");
