@@ -15,9 +15,7 @@
 	{
 		console.log("hi");
 		var request = new XMLHttpRequest();
-		navigator.geolocation.getCurrentPosition(function(position) {
-			var lat = position.coords.latitude;
-			var lng = position.coords.longitude;
+		navigator.geolocation.getCurrentPosition(initMap) {
 			console.log("Before initMap");
 			initMap();
 		});
@@ -25,6 +23,8 @@
 
 	function initMap(){
 		console.log("In initMap");
+		var lat = position.coords.latitude;
+		var lng = position.coords.longitude;
 		var mylatlng = new google.maps.LatLng(lat, lng);
 
 		var myOptions = {
