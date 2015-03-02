@@ -23,6 +23,7 @@
 
 	function initMap(position){
 		console.log("In initMap");
+		var infowindow = new google.maps.InfoWindow();	
 		var lat = position.coords.latitude;
 		var lng = position.coords.longitude;
 		var mylatlng = new google.maps.LatLng(lat, lng);
@@ -42,7 +43,13 @@
 		});
 		marker.setMap(map);
 
-		var infowindow = new google.maps.InfoWindow();	
+		google.maps.event.addListener(marker, 'click', function() {
+					infowindow.setContent(marker.title);
+					infowindow.open(map, marker);
+				});
+
+
+		
 }
 
 
