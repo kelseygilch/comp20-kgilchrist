@@ -37,9 +37,10 @@
 
 		var marker = new google.maps.Marker({
 				position: mylatlng,
-				map: map,
+			
 				title: "You are here!"
 		});
+		marker.setMap(map);
 
 		var infowindow = new google.maps.InfoWindow();	
 }
