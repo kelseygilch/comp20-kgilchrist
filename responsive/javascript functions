@@ -1,0 +1,47 @@
+function nameOfFn(arg1, arg2, arg3) //don't need types
+{
+
+
+}
+
+// can assign a variable to a function
+food = nameOfFn;
+
+// having wrong number of arguments to function won't give you an error
+// can call with more or less arguments than specified ex.
+nameOfFn(val1, val2, val3);
+nameOfFn(val1, val2); //arg3 becomes undefined
+nameOfFn(val1, val2, val3, val4); //extra arguments ignored
+
+//can use functions as values to variables
+
+foo = function() {
+
+}
+
+// function() {} considered an anonymous function because there's no name
+// passing a function into a function (fucntional composition)
+nameOfFn(val1, function() {}, val3)
+
+/**************************************/
+
+fucntion greet(firstName, lastName)
+{
+	console.log("Hello there " + firstName + " " + lastName + "!");
+}
+
+greet("phil", "of the future");
+
+foo = greet;
+foo("Bill", "Nye");
+/*
+FIRST CLASS FUNCTIONS
+can set a function as a value to a variable
+can use a function as a parameter to a function
+can return a function from a function
+
+- very important because: helps with readability, can renname the same function 
+according to what you want it to do
+- makes it more reusable
+*/
+
