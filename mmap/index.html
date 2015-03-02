@@ -28,14 +28,16 @@
 		var mylatlng = new google.maps.LatLng(lat, lng);
 
 		var myOptions = {
-			zoom: 5;
-			center: mylatlng
+			zoom: 5,
+			center: mylatlng,
+			mapTypeId: google.maps.MapTypeId.ROADMAP
 		};
 		var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 		console.log("After initMap");
 
 		var marker = new google.maps.Marker({
 				position: mylatlng,
+				map: map,
 				title: "You are here!"
 		});
 
