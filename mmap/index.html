@@ -53,10 +53,10 @@
 
 		var me = new google.maps.Marker({
 				position: mylatlng,
+				map: map,
 				icon: 'Magic-hat-icon.png',
 				title: "RobertHeller is here"
 		});
-		me.setMap(map);
 
 		mywindow.setContent(me.title);
 		mywindow.open(me, marker);
