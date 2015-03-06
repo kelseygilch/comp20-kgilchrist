@@ -2,6 +2,7 @@
 
 .h1{
 	font-family: Cambria;
+	text-align: center;
 }
 
 #messages {
@@ -10,5 +11,5 @@
     padding-left: 20px;
     font-family: Cambria;
     background-color: #9494FF;
-    font: #FFFFFF;
+    color: #FFFFFF;
 }
