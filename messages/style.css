@@ -7,7 +7,8 @@
 #messages {
 	border: 2px solid;
     border-radius: 25px;
+    padding-left: 20px;
     font-family: Cambria;
     background-color: #9494FF;
-    font: white;
+    font: #FFFFFF;
 }
