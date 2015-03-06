@@ -1,9 +1,13 @@
 /* Your CSS here... */
 
 .h1{
-	
+	font-family: Cambria;
 }
 
 #messages {
-	
+	border: 2px solid;
+    border-radius: 25px;
+    font-family: Cambria;
+    background-color: #9494FF;
+    font: white;
 }
