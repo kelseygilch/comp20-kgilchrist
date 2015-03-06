@@ -16,16 +16,16 @@
 	}
 
 	function initMap(position){
-		var mywindow = new google.maps.InfoWindow();	
-		var lat = position.coords.latitude;
-		var lng = position.coords.longitude;
-		var mylatlng = new google.maps.LatLng(lat, lng);
+		mywindow = new google.maps.InfoWindow();	
+		mylat = position.coords.latitude;
+		mylng = position.coords.longitude;
+		mylatlng = new google.maps.LatLng(lat, lng);
 
 		xhr = new XMLHttpRequest();
 		xhr.open("POST", "https://secret-about-box.herokuapp.com/sendLocation", true);
 		xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		xhr.onreadystatechange = parseData;
-		xhr.send("login=RobertHeller&lat="+lat+"&lng="+lng);
+		xhr.send("login=RobertHeller&lat="+mylat+"&lng="+mylng);
 
 		var myOptions = {
 			zoom: 15,
@@ -65,7 +65,7 @@ function parseData() {
 					title: info[i]["login"] + " is here"
 				});
 				pwindow.setContent(person.title);
-				pwindow.open(map, person);
+				//pwindow.open(map, person);
 			}
 		}
 
