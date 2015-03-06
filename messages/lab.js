@@ -2,9 +2,9 @@
 function parse() {
 	request = new XMLHttpRequest();
 
-	request.onreadystatechange = parseData;
-
 	request.open("GET", "data.json", true);
+
+	request.onreadystatechange = parseData;
 
 	request.send();
 }
@@ -15,7 +15,7 @@ function parseData() {
 		converted = JSON.parse(request.responseText);
 
 		for (i = 0; i < converted.length; i++) {
-			messagesDiv.innerHTML += "<p>" + converted[i]["content"] + " - " converted[i]["username"] "</p>";
+			messagesDiv.innerHTML += "<p>" + converted[i]["content"] + " - " + converted[i]["username"] + "</p>";
 		}
 	}
 	else if (request.readyState == 4 && request.status == 404) {
