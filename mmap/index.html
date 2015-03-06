@@ -22,15 +22,15 @@
 		var lng = position.coords.longitude;
 		var mylatlng = new google.maps.LatLng(lat, lng);
 
-		var xhr = new XMLHttpRequest();
+		xhr = new XMLHttpRequest();
 		xhr.open("POST", "https://secret-about-box.herokuapp.com/sendLocation", true);
 		xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		xhr.send("login=RobertHeller&lat="+lat+"&lng="+lng);
 
-		var info = JSON.parse(xhr.responseText);
+		info = JSON.parse(xhr.responseText);
 
 		//info[i]["login"];
-		console.log(info[i]["login"]);
+		console.log(info[0]["error"]);
 		//info[i].lat;
 		//info[i].lng;
 /*
