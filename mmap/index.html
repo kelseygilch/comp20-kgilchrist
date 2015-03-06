@@ -22,7 +22,7 @@
 		var mylatlng = new google.maps.LatLng(lat, lng);
 
 		var xhr = new XMLHttpRequest();
-		xhr.open("GET", "https://secret-about-box.herokuapp.com/sendLocation", true);
+		xhr.open("POST", "https://secret-about-box.herokuapp.com/sendLocation", true);
 		xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		xhr.send("login=RobertHeller&lat="+lat+"&lng="+lng);
 
