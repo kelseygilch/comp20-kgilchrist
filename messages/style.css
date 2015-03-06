@@ -1,11 +1,9 @@
-/* Your CSS here... */
-
-.h1{
+.h1 {
 	font-family: Cambria;
 	text-align: center;
 }
 
-#messages {
+p {
 	border: 2px solid;
     border-radius: 25px;
     padding-left: 20px;
