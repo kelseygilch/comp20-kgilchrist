@@ -69,7 +69,7 @@ function parseData() {
 			person = new google.maps.Marker({
 				position: latlng,
 				map: map,
-				title: icon[i]["login"]  " is here"
+				title: icon[i]["login"] + " is here"
 			});
 			window.setContent(person.title);
 			window.open(map, person);
