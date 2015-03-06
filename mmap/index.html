@@ -12,35 +12,55 @@
 
 	function initialize() 
 	{
-		console.log("hi");
-		//var request = new XMLHttpRequest();
-		navigator.geolocation.getCurrentPosition(initMap); {
-			console.log("Before initMap");
-			initMap();
-		});
+		navigator.geolocation.getCurrentPosition(initMap)
 	}
 
-	function initMap(){
-		console.log("In initMap");
+	function initMap(position){
+		var mywindow = new google.maps.InfoWindow();	
 		var lat = position.coords.latitude;
 		var lng = position.coords.longitude;
 		var mylatlng = new google.maps.LatLng(lat, lng);
 
+		var xhr = new XMLHttpRequest();
+		xhr.open("POST", "https://secret-about-box.herokuapp.com/sendLocation", true);
+		xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xhr.send("login=RobertHeller&lat="+lat+"&lng="+lng);
+
+		var info = JSON.parse(xhr.responseText);
+
+		info[i].login;
+		console.log(info[i].login);
+		info[i].lat;
+		info[i].lng;
+/*
+
+		{"_id":"54e95ff46cca2a030048cf14","login":"mchow","lat":40.67693,"lng":117.23193,"created_at":"2015-02-22T05:12:24.596Z"}
+		{"error":"Whoops, something is wrong with your data!"}
+
+
+		^^ may want to have a loop to go through the responses in an array
+*/
 		var myOptions = {
-			center: mylatlng
+			zoom: 15,
+			center: mylatlng,
+			mapTypeId: google.maps.MapTypeId.ROADMAP
 		};
 		var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-		console.log("After initMap");
-		var infowindow = new google.maps.InfoWindow();	
-		}
 
-	function showme(){
-		var marker = new google.maps.Marker({
+		var me = new google.maps.Marker({
 				position: mylatlng,
-				title: "You are here!"
+				map: map,
+				icon: 'Magic-hat-icon.png',
+				title: "RobertHeller is here"
 		});
-	}
 
+		mywindow.setContent(me.title);
+		mywindow.open(map, me);
+		
+
+
+		
+}
 
 </script>
 
