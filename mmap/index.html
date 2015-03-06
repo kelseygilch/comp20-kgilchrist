@@ -39,7 +39,7 @@
 			center: mylatlng,
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 		};
-		var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+		map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 
 		var me = new google.maps.Marker({
 				position: mylatlng,
@@ -61,8 +61,21 @@ function parseData() {
 		if (xhr.readyState == 4 && xhr.status == 200) {
 			info = JSON.parse(xhr.responseText);
 
+
+		for (i = 0; i < info.length; i++) {
+			console.log(info[i]["login"]);
+			latlng = new google.maps.LatLng(info[i]["lat"], info[i]["lng"]);
+			window = new google.maps.InfoWindow();
+			person = new google.maps.Marker({
+				position: latlng,
+				map: map,
+				title: icon[i]["login"]  " is here"
+			});
+			window.setContent(person.title);
+			window.open(map, person);
+		}
 		//info[i].login;
-		console.log(info[1]["login"]);
+		
 		//info[i].lat;
 		//info[i].lng;
 	}
