@@ -10,12 +10,15 @@ function parse() {
 }
 
 function parseData() {
-	if (request.readyState == 4 && request.status != 404) {
+	if (request.readyState == 4 && request.status == 200) {
 		messagesDiv = document.getElementById("messages");
 		converted = JSON.parse(request.responseText);
 
 		for (i = 0; i < converted.length; i++) {
-			messagesDiv.innerHTML += "<p>" + converted[i]["content"] + " " converted[i]["username"] "</p>";
+			messagesDiv.innerHTML += "<p>" + converted[i]["content"] + " - " converted[i]["username"] "</p>";
 		}
+	}
+	else if (request.readyState == 4 && request.status == 404) {
+		alert("Bad Status Code");
 	}
 }
