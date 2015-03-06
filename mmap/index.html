@@ -19,7 +19,7 @@
 		mywindow = new google.maps.InfoWindow();	
 		mylat = position.coords.latitude;
 		mylng = position.coords.longitude;
-		mylatlng = new google.maps.LatLng(lat, lng);
+		mylatlng = new google.maps.LatLng(mylat, mylng);
 
 		xhr = new XMLHttpRequest();
 		xhr.open("POST", "https://secret-about-box.herokuapp.com/sendLocation", true);
@@ -58,7 +58,7 @@ function parseData() {
 				lat = info[i]["lat"];
 				lng = info[i]["lng"];
 				dist = distance(lat, lng);
-				latlng = new google.maps.LatLng(lat,lng);
+				latlng = new google.maps.LatLng(lat, lng);
 				pwindow = new google.maps.InfoWindow();
 				person = new google.maps.Marker({
 					position: latlng,
