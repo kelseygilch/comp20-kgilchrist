@@ -26,14 +26,7 @@
 		xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		xhr.onreadystatechange = parseData;
 		xhr.send("login=RobertHeller&lat="+lat+"&lng="+lng);
-/*
 
-		{"_id":"54e95ff46cca2a030048cf14","login":"mchow","lat":40.67693,"lng":117.23193,"created_at":"2015-02-22T05:12:24.596Z"}
-		{"error":"Whoops, something is wrong with your data!"}
-
-
-		^^ may want to have a loop to go through the responses in an array
-*/
 		var myOptions = {
 			zoom: 15,
 			center: mylatlng,
@@ -63,21 +56,21 @@ function parseData() {
 
 
 		for (i = 0; i < info.length; i++) {
-			console.log(info[i]["login"]);
-			latlng = new google.maps.LatLng(info[i]["lat"], info[i]["lng"]);
-			pwindow = new google.maps.InfoWindow();
-			person = new google.maps.Marker({
-				position: latlng,
-				map: map,
-				title: info[i]["login"] + " is here"
-			});
-			pwindow.setContent(person.title);
-			pwindow.open(map, person);
+			if (info[i]["login"]!="RobertHeller") {
+
+				console.log(info[i]["login"]);
+				latlng = new google.maps.LatLng(info[i]["lat"], info[i]["lng"]);
+				pwindow = new google.maps.InfoWindow();
+				person = new google.maps.Marker({
+					position: latlng,
+					map: map,
+					title: info[i]["login"] + " is here"
+				});
+				pwindow.setContent(person.title);
+				pwindow.open(map, person);
+			}
 		}
-		//info[i].login;
-		
-		//info[i].lat;
-		//info[i].lng;
+
 	}
 }
 
