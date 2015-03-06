@@ -65,14 +65,14 @@ function parseData() {
 		for (i = 0; i < info.length; i++) {
 			console.log(info[i]["login"]);
 			latlng = new google.maps.LatLng(info[i]["lat"], info[i]["lng"]);
-			window = new google.maps.InfoWindow();
+			pwindow = new google.maps.InfoWindow();
 			person = new google.maps.Marker({
 				position: latlng,
 				map: map,
 				title: info[i]["login"] + " is here"
 			});
-			window.setContent(person.title);
-			window.open(map, person);
+			pwindow.setContent(person.title);
+			pwindow.open(map, person);
 		}
 		//info[i].login;
 		
