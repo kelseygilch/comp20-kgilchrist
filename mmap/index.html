@@ -92,7 +92,7 @@ function distance(lat2, lon2){
 	var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
 	var d = R * c;
 
-	return d.toPrecision(3);
+	return d.toFixed(4);
 }
 
 
