@@ -18,7 +18,7 @@
 		mylatlng = new google.maps.LatLng(mylat, mylng);
 
 		xhr = new XMLHttpRequest();
-		xhr.open("POST", "http://secret-brushlands-3828.herokuapp.com/sendLocation", true);
+		xhr.open("POST", "https://arcane-bayou-9624.herokuapp.com/sendLocation", true);
 		xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		xhr.onreadystatechange = parseData;
 		xhr.send("login=RobertHeller&lat="+mylat+"&lng="+mylng);
