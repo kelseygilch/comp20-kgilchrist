@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title> Security Assessment on secure-fjord-9926 Application</title>
+<link rel="stylesheet" href="website.css" />
+</head>
+
+<body>
+<h1> Security Assessment on secure-fjord-9926 Application</h1>
+<p> By: Kelsey Gilchrist </p>
+
+<h2> Introduction </h2>
+Provide a description of the product and what you were hired to do
+<p> This assessement is to analyze the security and privacy issues in the <a href="http://secure-fjord-9926.herokuapp.com">secure-fjord-9926</a> application. Secure-fjord-9926 is interested in deploying their Marauder's Map site to the public but before doing so they were advised to get it analyzed for possible security and privacy vulnerabilities. The purpose of the Marauder's Map site is to collect location information from people who go to the site, and then display the user's location as well as the location of other people who have "checked-in." This location information is sent to a mongodb server where it is stored and then retrieved when the location information is to be displayed in the map. This investigation found numerous vulnerabilities that need to be addressed in this product before it is deployed to the public. </p>
+
+<h2> Methodology </h2>
+ Describe your methodology pen testing the application, including the tools that you used
+
+ <p> In testing this application, a black-box approach was first taken to assess what a malicious user could potewntially do with the application. Curl was used to post invalid information to the server to see how the application handled mischevious input. Then, a white-box approach was taken where the source code was analyzed to see other potential areas that were susceptible to attack. </p> 
+
+<h2> Abstract of Findings </h2>
+ Provide an overview of all the security and privacy issues you identified. This section should be written for non-technical managers who do not have technical expertise and do not have time to read the entire document. Write this section using lay language.
+
+ <p>The security and privacy issues found in this application stem primarily from not verifying the user provided input before storing it in and returning it to the client in the original form. This causes problems because the client could provide any type of input and it will be executed. 
+ </p>
+
+<h2> Issues Found </h2>
+ For each issue that you find, document:
+ <ol>
+ <li> Cross Site Scripting 
+ <ul>
+ <li>Location: HTTP POST /sendLocation method </li>
+<li> Severity: HIGH This security issue is due to the server not checking the validity of the input provided by the client before executing it. The client can therefore effectively change the entire webpage by providing JavaScript or HTML as their input. </li>
+<li> Description: This issue was found when testing the /sendLocation command using curl. Any type of information could be POSTed as long as it had the tags: "login", "lat" and "lng". Viewing the source code confirmed this because the error msg is only shown when one of the three variables above are undefined. </li>
+<li> Proof of Vulnerability: 
+
+<p> This is the result of using: "curl --data 'login= < img src = http://dailynewsdig.com/wp-content/uploads/2013/05/Cutest-Baby-Animals-top-10-5.jpg alt="dog">&lat=70&lng=70' http://secure-fjord-9926.herokuapp.com/sendLocation" </p>
+<div class = "i"> <img src="doggie.png" alt="Dog as login" title="img tag" />  </div>
+
+<p> This is the result of inserting an alert box as the login information </p>
+<div class = "i"><img src="popup.png" alt="Alert Box" title="alert box" /> </div>
+
+<p> This is the result of inserting a meta tag that redirects the page to: 4chan.org </p> 
+<div class = "i"><img src="4chan.png" alt="Redirect to 4chan" title="redirect" /> </div>
+
+<p> These examples show the wide range of problems and issues that can arise when the server does not verify the type of information the client is providing before executing it.</p>
+
+</li>
+
+<li> Resolution: This can be resolved fairly easily by not inserting user input into the database if it is not the format expected or desired by the server. Additionally, the input can be parsed character by character to eliminate potentially problematic characters. For example, '<' and '>' can be replaced by greather than or less than symbols so they are not read as tags. </li>
+ </ul> </li>
+
+<li> Cross Origin Resource Sharing
+<ul>
+<li>Location: HTTP POST /sendLocation method </li>
+<li> Severity: HIGH The server has set the Access-Control-Allow-Origin response header to allow all origins to access the contents of the page through the "*". This means requests can be made from any origin and they will be approved.
+</li>
+<li> Description: This issue was found when viewing the source code for the server. 
+<img src="CORS.png" alt="CORS *" title="CORS" /></li>
+<li> Proof of Vulnerability: Any site can access the information from the server. Therefore if there is private information stored in the database it can be retrieved easily by another site without the server having to give them permission. Once a site has this information they can use it however they wish. </li>
+<li> Resolution: This can be remedied by authenticating the website that is requesting the page through checking their credentials such as their cookies to verify that that origin is approved for making a request. </li>
+</ul> </li>
+
+
+<li> Query MONNGODB
+<ul>
+<li>Location: HTTP GET /location.json method (the database) </li>
+<li> Severity: MEDIUM An attacker can find information in the db besides whether their query exists. Only one record is returned but the security breach is still significant </li>
+<li> Description: This issue was found when looking at the source code and seeing that the GET method gets the query from the client and then queries the database with the client's input. This means people can query the database for anything and they can even find out what else is in the database, besides what an innocent query may be.
+
+<p> This is the result of inserting a meta tag that redirects the page to: 4chan.org </p> 
+<div class = "i"><img src="locationjson.png" alt="location code" title="Proof of location" /> </div>
+</li>
+<li> Proof of Vulnerability: One can query the database just by knowing what key the application uses to perform the query. 
+<p> Using the $ne parameter queries the database for any login not equal to the supplied value (in this case "mchow")</p> 
+<div class = "i"><img src="ne url.png" alt="URL of get" title="URL using ne" /> </div>
+
+<p> This returns a JSON of one record whose value for the login key does not match the supplied value</p> 
+<div class = "i"><img src="query res.png" alt="ne response" title="Query to ne" /> </div>
+
+<p> This is dangerous because through querying MONGODB an attacker can find out the other data that exists in the database. This is problematic because other people's information and locations can be returned to anyone. In addition, knowing the login value is all the information needed for a client to gain access to all the other information in the db associated with that login. In this case the data returned is not as harmful as it could be (i.e. bank account information) but one's geolocation is still a privacy concern.
+</p> 
+
+</li>
+<li> Resolution: Instead of using the exact string the client provides to query the database, the provided string can be parsed to ensure it is just a login value. The client can also require authentication before being able to query the database to ensure only trustworthy people query the database. </li>
+</ul> </li>
+
+
+<h2> Conclusion </h2>
+This preliminary report illuminates the most obvious security and privacy concerns for the secure-fjord-9926 application. Most of the problems stem from putting too much trust into the client. The application currently uses the client's input without verifying its content or format. Many of the issues outlined above can be addressed if the input is parsed before inserting it into the database and before using it to query the database. Furthermore, this application allows every website access to its pages which inevitable implies a lot of security risk. Neither verifying the client's input or authenticating the client should be too difficult and together this will help ensure a more secure application. If this application has plans to increase their scale, they may want to consider using a different database server which would encrypt the information stored and prevent the database from being accessed by any user. Depending of the database server chosen, the cost will vary but if it prevents a security breach then the cost is worth it.
+
+</body>
+
+</html>
