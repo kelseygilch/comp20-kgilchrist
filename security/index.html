@@ -22,7 +22,6 @@
  </p>
 
 <h2> Issues Found </h2>
- For each issue that you find, document:
  <ol>
  <li> Cross Site Scripting 
  <ul>
@@ -84,7 +83,7 @@
 
 
 <h2> Conclusion </h2>
-This preliminary report illuminates the most obvious security and privacy concerns for the secure-fjord-9926 application. Most of the problems stem from putting too much trust into the client. The application currently uses the client's input without verifying its content or format. Many of the issues outlined above can be addressed if the input is parsed before inserting it into the database and before using it to query the database. Furthermore, this application allows every website access to its pages which inevitable implies a lot of security risk. Neither verifying the client's input or authenticating the client should be too difficult and together this will help ensure a more secure application. If this application has plans to increase their scale, they may want to consider using a different database server which would encrypt the information stored and prevent the database from being accessed by any user. Depending of the database server chosen, the cost will vary but if it prevents a security breach then the cost is worth it.
+<p>This preliminary report illuminates the most obvious security and privacy concerns for the secure-fjord-9926 application. Most of the problems stem from putting too much trust into the client. The application currently uses the client's input without verifying its content or format. Many of the issues outlined above can be addressed if the input is parsed before inserting it into the database and before using it to query the database. Furthermore, this application allows every website access to its pages which inevitable implies a lot of security risk. Neither verifying the client's input or authenticating the client should be too difficult and together this will help ensure a more secure application. If this application has plans to increase their scale, they may want to consider using a different database server which would encrypt the information stored and prevent the database from being accessed by any user. Depending of the database server chosen, the cost will vary but if it prevents a security breach then the cost is worth it.</p>
 
 </body>
 

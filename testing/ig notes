@@ -1,0 +1,125 @@
+<script src="Scripts/jquery-1.4.1.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+             GetPopularPhotos();
+        });
+
+
+
+
+
+function tagging() {
+
+	$("tags").html("");
+	$.ajax({
+      type: "GET",
+      dataType: "jsonp",
+      cache: false,
+      
+      url: "https://api.instagram.com/v1/tags/food/media/recent?access_token=1825654502.22880a8.088578a5f9a34067ad37caf165e0ba03",
+
+      success: function(data) {
+        // placing the images on the page  data["data"].length
+        for (var i = 0; i < data["data"].length; i++) {
+        	console.log(data.data[i].location);
+        	if((data.data[i].type == "image") && (data.data[i].location.latitude==42.388090))
+        	{
+        		$("#tags").append("<li><a target='_blank' href='" + data.data[i].link + "'><img src='" + data.data[i].images.low_resolution.url + "'></img></a></li>");
+        	}
+    	}
+      }
+	});
+
+	$.ajax({
+      type: "GET",
+      dataType: "jsonp",
+      cache: false,
+      
+      url: "https://api.instagram.com/v1/tags/foodie/media/recent?access_token=1825654502.22880a8.088578a5f9a34067ad37caf165e0ba03",
+
+      success: function(data) {
+        // placing the images on the page  data["data"].length
+        for (var i = 0; i < data["data"].length; i++) {
+        	console.log(data.data[i].location);
+        	if((data.data[i].type == "image") && (data.data[i].location.latitude==42.388090))
+        	{
+        		$("#tags").append("<li><a target='_blank' href='" + data.data[i].link + "'><img src='" + data.data[i].images.low_resolution.url + "'></img></a></li>");
+        	}
+    	}
+      }
+	});
+	$.ajax({
+      type: "GET",
+      dataType: "jsonp",
+      cache: false,
+      
+      url:"https://api.instagram.com/v1/tags/foodgasm/media/recent?access_token=1825654502.22880a8.088578a5f9a34067ad37caf165e0ba03",
+
+      success: function(data) {
+        // placing the images on the page  data["data"].length
+        for (var i = 0; i < data["data"].length; i++) {
+        	console.log(data.data[i].location);
+        	if((data.data[i].type == "image") && (data.data[i].location.latitude==42.388090))
+        	{
+        		$("#tags").append("<li><a target='_blank' href='" + data.data[i].link + "'><img src='" + data.data[i].images.low_resolution.url + "'></img></a></li>");
+        	}
+    	}
+      }
+	});
+	$.ajax({
+      type: "GET",
+      dataType: "jsonp",
+      cache: false,
+      
+      url: "https://api.instagram.com/v1/tags/yum/media/recent?access_token=1825654502.22880a8.088578a5f9a34067ad37caf165e0ba03",
+
+      success: function(data) {
+        // placing the images on the page  data["data"].length
+        for (var i = 0; i < data["data"].length; i++) {
+        	console.log(data.data[i].location);
+        	if((data.data[i].type == "image") && (data.data[i].location.latitude==42.388090))
+        	{
+        		$("#tags").append("<li><a target='_blank' href='" + data.data[i].link + "'><img src='" + data.data[i].images.low_resolution.url + "'></img></a></li>");
+        	}
+    	}
+      }
+	});
+
+	$.ajax({
+      type: "GET",
+      dataType: "jsonp",
+      cache: false,
+      
+      url: "https://api.instagram.com/v1/tags/nom/media/recent?access_token=1825654502.22880a8.088578a5f9a34067ad37caf165e0ba03",
+
+      success: function(data) {
+        // placing the images on the page  data["data"].length
+        for (var i = 0; i < data["data"].length; i++) {
+        	console.log(data.data[i].location);
+        	if((data.data[i].type == "image") && (data.data[i].location.latitude==42.388090))
+        	{
+        		$("#tags").append("<li><a target='_blank' href='" + data.data[i].link + "'><img src='" + data.data[i].images.low_resolution.url + "'></img></a></li>");
+        	}
+    	}
+      }
+	});
+
+	$.ajax({
+      type: "GET",
+      dataType: "jsonp",
+      cache: false,
+      
+      url: "https://api.instagram.com/v1/tags/foodporn/media/recent?access_token=1825654502.22880a8.088578a5f9a34067ad37caf165e0ba03",
+
+      success: function(data) {
+        // placing the images on the page  data["data"].length
+        for (var i = 0; i < data["data"].length; i++) {
+        	console.log(data.data[i].location);
+        	if((data.data[i].type == "image") && (data.data[i].location.latitude==42.388090))
+        	{
+        		$("#tags").append("<li><a target='_blank' href='" + data.data[i].link + "'><img src='" + data.data[i].images.low_resolution.url + "'></img></a></li>");
+        	}
+    	}
+      }
+	});
+}
