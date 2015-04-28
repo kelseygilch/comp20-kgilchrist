@@ -1,6 +1,6 @@
 # comp20-kgilchrist
 
-The purpose of this Git repository is to showcase the projects I completed as part of a Web Programming course I took at Tufts University. This includes an online portfolio, a simulated Marauder's Map, a network server for the Marauder's Map 
+The purpose of this Git repository is to showcase the projects I completed as part of a Web Programming course I took at Tufts University. This includes an online portfolio, a simulated Marauder's Map, a network server for the Marauder's Map, among other labs and assignments. 
 
 My favorite lab was responsive design because I thought it was incredible how the browser could tell what its size was and it was possible to change what was displayed on the web browser based on its size. This was one of the early labs so I was amazed at how one could write code that's responsive to something like the size of the web browser. Additionally, once the lab worked it was exciting to see the cartoon change just by adjusting the window size.
 
